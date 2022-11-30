@@ -1,0 +1,15 @@
+{
+    "name": "cerneigabriel/datatable",
+    "type": "composer-plugin",
+    "autoload": {
+        "psr-4": {
+            "Cerneigabriel\\Datatable\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Cernei Gabriel"
+        }
+    ],
+    "require": {}
+}

@@ -1,0 +1,91 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ abstractDatatable }};
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Auth\Access\Response;
+use {{ namespacedModel }};
+
+/**
+ * Class {{ class }}
+ *
+ * @package App\DataTables
+ */
+class {{ class }} extends DataTable
+{
+    /** @var string */
+    public string $model = {{ model }}::class;
+
+
+    /** @var string */
+    public string $name = '{{ class }}';
+
+    /** @var string */
+    public string $sortDir = 'desc'; // 'desc' | 'asc'
+
+    /** @var string */
+    public string $sortBy = 'created_at'; // Column Name
+
+    /** @var bool */
+    public bool $hasQueryStrings = true; // Display Search, Filters, Sorting and Pagination properties in url
+
+    /** @var bool */
+    public bool $paginate = true; // true | false
+
+    /** @var int */
+    public int $pageLength = 10; // 10 | 25 | 50 | 100
+
+    /** @var bool */
+    public bool $enableSearch = true; // Enable Search
+
+    /** @var bool */
+    public bool $enableConstraints = false; // Enable Search Constraints
+
+    /** @var bool */
+    public bool $enableSorting = true; // Enable Sorting
+
+    /** @var bool */
+    public bool $enableFilters = true; // Enable Filters
+
+    /** @var bool */
+    public bool $enableResetFilters = true; // Enable Reset Filters Button
+
+    /** @var bool */
+    public bool $showRecordsCountInDataTableHeader = false; // Show Records Count in Datatable Header
+
+    /**
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function authorize(): Response|bool
+    {
+        return true;
+    }
+
+    /**
+     * @return void
+     */
+    public function init()
+    {
+        // Set your columns
+        $this->setColumns();
+
+        // Set your filters
+        $this->setFilters();
+
+        // Set your actions
+        $this->setActions();
+
+        // Set your constraints
+        $this->setConstraints();
+    }
+
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function query(Builder $query): Builder
+    {
+        return $query;
+    }
+}
